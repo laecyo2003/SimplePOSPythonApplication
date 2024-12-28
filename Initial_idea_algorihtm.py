@@ -1,4 +1,15 @@
-produtos = []
+produtos = [
+    {'ID': '01', 'nome': 'Arroz', 'preco': 4.5, 'imagem': 'Arroz.png', 'quantidade': 30},
+    {'ID': '02', 'nome': 'Feijão', 'preco': 6.4, 'imagem': 'Feijão.png', 'quantidade': 20},
+    {'ID': '03', 'nome': 'Farinha de mandioca', 'preco': 3.8, 'imagem': 'farinha de mandioca.png', 'quantidade': 10},
+    {'ID': '04', 'nome': 'Biscoito', 'preco': 2.0, 'imagem': 'biscoito.png', 'quantidade': 30},
+    {'ID': '05', 'nome': 'Bolacha', 'preco': 3.0, 'imagem': 'bolacha.png', 'quantidade': 50},
+    {'ID': '06', 'nome': 'bola', 'preco': 40.0, 'imagem': 'bola.png', 'quantidade': 27},
+    {'ID': '07', 'nome': 'desodorante', 'preco': 5.0, 'imagem': 'desodorante.png', 'quantidade': 10},
+    {'ID': '08', 'nome': 'água', 'preco': 1.5, 'imagem': 'agua.png', 'quantidade': 100},
+    {'ID': '09', 'nome': 'refrigerante', 'preco': 6.0, 'imagem': 'refrigerante.png', 'quantidade': 75},
+    {'ID': '10', 'nome': 'linhaça', 'preco': 8.0, 'imagem': 'linhaça.png', 'quantidade': 23}
+]
 
 def CadastrarProduto():
     produto = {}
@@ -17,13 +28,16 @@ def RealizarVenda(produtos):
     valor_total_venda = 0
     codigo_produto_na_venda = int(input("Digite o código do produto para adicioná-lo à venda. Quando terminar de adicionar todos os produtos à venda, digite -1: "))
     lista_produtos_venda.append(produtos[codigo_produto_na_venda]) # Acessar a lista produtos com todos os produtos na posição que o usuário inseriu 
-    valor_total_venda = valor_total_venda + lista_produtos_venda[0]['preco']
+    valor_total_venda = valor_total_venda + produtos[codigo_produto_na_venda]['preco']
     print(f"Produtos na venda: {lista_produtos_venda}")
     print(f"Valor total da venda: {valor_total_venda}")
     while codigo_produto_na_venda != -1:
         codigo_produto_na_venda = int(input("Digite o código do produto para adicioná-lo à vendao ou digite -1 para encerrar a venda: "))
-        lista_produtos_venda.append(produtos[codigo_produto_na_venda]) # Acessar a lista produtos com todos os produtos na posição que o usuário inseriu 
-        valor_total_venda = valor_total_venda + lista_produtos_venda[0]['preco']
+        if codigo_produto_na_venda != -1:
+            lista_produtos_venda.append(produtos[codigo_produto_na_venda]) # Acessar a lista produtos com todos os produtos na posição que o usuário inseriu 
+            valor_total_venda = valor_total_venda + produtos[codigo_produto_na_venda]['preco']
+        else:
+            break
         print(f"Produtos na venda: {lista_produtos_venda}")
         print(f"Valor total da venda: {valor_total_venda}")
     print(f"Venda finalizada")
