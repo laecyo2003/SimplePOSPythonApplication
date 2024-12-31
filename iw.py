@@ -1,0 +1,3 @@
+entrada_usuario = int(input("1 --- Realizar nova venda\n2 --- Cadastrar produto\n3 --- Consultar fiados\n0 --- Encerrar o programa\n"))
+while(entrada_usuario != 1) and (entrada_usuario != 2) and (entrada_usuario != 3) and (entrada_usuario != 0):
+    entrada_usuario = input("Você inseriu uma opção inválida!\nPor favor, insira uma das seguintes opções:\n1 --- Realizar nova venda\n2 --- Cadastrar produto\n3 --- Consultar fiados\n0 --- Encerrar o programa\n")
