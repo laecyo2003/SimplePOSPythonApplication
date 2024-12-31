@@ -1,19 +1,18 @@
 # SISTEMA DE PONTO DE VENDA (PDV) E DE GERENCIAMENTO DE FIADOS
+import sqlite3
 
-produtos = [
-    {'nome': 'Arroz', 'preco': 4.5, 'quantidade': 30},
-    {'nome': 'Feijão', 'preco': 6.4, 'quantidade': 20},
-    {'nome': 'Farinha de mandioca', 'preco': 3.8, 'quantidade': 10},
-    {'nome': 'Biscoito', 'preco': 2.0, 'quantidade': 30},
-    {'nome': 'Bolacha', 'preco': 3.0, 'quantidade': 50},
-    {'nome': 'bola', 'preco': 40.0, 'quantidade': 27},
-    {'nome': 'desodorante', 'preco': 5.0, 'quantidade': 10},
-    {'nome': 'água', 'preco': 1.5, 'quantidade': 100},
-    {'nome': 'refrigerante', 'preco': 6.0, 'quantidade': 75},
-    {'nome': 'linhaça', 'preco': 8.0, 'quantidade': 23}
-]
-#Os produtos serão armazenados na lista produtos, onde cada produto é um dicionário e pode ser identificado pelo índice da lista
-def AdicionarProdutoVenda(produtos):
+database = sqlite3.connect("EmpresaGerenciamento.db") # Criando o banco de dados EmpresaGerenciamento
+
+handler = database.cursor() # Definindo o cursor do banco de dados
+
+#handler.execute("CREATE TABLE produtos (produto_id, nome, preço, quantidade_estoque)") --- Tabela de produtos em estoque criada
+handler.execute("CREATE TABLE clientes_fiados (cf_id, cf_nome, cf_telefone, cf_endereço, cf_total_devido)")
+handler.execute("CREATE TABLE compras_clientes_fiados (cf_compra_id, descrição_compra, valor_total_compra)")
+handler.execute("CREATE TABLE itens_compra ")
+
+
+
+'''def AdicionarProdutoVenda(produtos):
     venda.append(produto)
     produto_na_venda['qtd_produto_venda'] in venda = qtd_produto_venda
     produto['quantidade'] = produto['quantidade'] - qtd_produto_venda
@@ -57,6 +56,9 @@ def CadastrarProduto(produtos):
     }
     produtos.append(produto)
     print("Produto cadastrado!")
+'''
+result = handler.execute("SELECT name FROM sqlite_master")
+print(result.fetchone())
 
 
 
@@ -69,13 +71,4 @@ def CadastrarProduto(produtos):
 
 
 
-opcao = int(input("1 --- Realizar uma venda\n2 --- Cadastrar um produto\n3 --- Consultar Fiados\n0 --- Encerrar programa"))
-if opcao == 1:
-    RealizarVenda(produtos)
-elif opcao == 2:
-    CadastrarProduto(produtos)
-elif opcao == 3:
-    ConsultarFiados()
-else:
-    print("O programa está sendo encerrado")
 
